@@ -1,0 +1,4 @@
+GLOBAL SOLUTION 2 - 2026 | BAIRROATIVO
+Link do repositório GitHub: [INSERIR LINK DO GITHUB]
+Após criar o repositório, substituir o campo acima e conceder acesso ao tutor.
+Documentação, README.txt, código-fonte e modelos de dados devem estar incluídos no repositório.

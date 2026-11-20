@@ -1,0 +1,40 @@
+{
+  "expo": {
+    "name": "BairroAtivo",
+    "slug": "bairroativo",
+    "scheme": "bairroativo",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "ios": {
+      "bundleIdentifier": "br.com.bairroativo.app",
+      "supportsTablet": true
+    },
+    "android": {
+      "package": "br.com.bairroativo.app"
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Permita ao BairroAtivo anexar uma foto à ocorrência.",
+          "cameraPermission": "Permita que o BairroAtivo use a câmera para fotografar uma ocorrência.",
+          "microphonePermission": false
+        }
+      ],
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "Permita que o BairroAtivo preencha as coordenadas da ocorrência com a posição atual do aparelho.",
+          "locationAlwaysAndWhenInUsePermission": false,
+          "locationAlwaysPermission": false,
+          "motionUsagePermission": false
+        }
+      ],
+      "expo-status-bar",
+      "expo-font",
+      "expo-secure-store"
+    ]
+  }
+}

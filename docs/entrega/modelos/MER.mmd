@@ -1,0 +1,8 @@
+erDiagram
+    APP_USER ||--o{ ISSUE : records
+    CATEGORY ||--o{ ISSUE : classifies
+    LOCATION ||--|| ISSUE : locates
+    APP_USER ||--o{ CONFIRMATION : makes
+    ISSUE ||--o{ CONFIRMATION : receives
+    ISSUE ||--|{ STATUS_CHANGE : has
+    APP_USER ||--o{ STATUS_CHANGE : records

@@ -1,0 +1,77 @@
+erDiagram
+    APP_USER ||--o{ APP_SESSION : user_id
+    APP_USER ||--o{ ISSUE : author_id
+    ISSUE_CATEGORY ||--o{ ISSUE : category_id
+    ISSUE_LOCATION ||--o| ISSUE : location_id
+    ISSUE ||--o{ ISSUE_CONFIRMATION : issue_id
+    APP_USER ||--o{ ISSUE_CONFIRMATION : user_id
+    ISSUE ||--o{ ISSUE_STATUS_HISTORY : issue_id
+    APP_USER ||--o{ ISSUE_STATUS_HISTORY : actor_id
+
+    APP_USER {
+        NUMBER id PK
+        VARCHAR2 demo_key UK
+        VARCHAR2 display_name
+        VARCHAR2 email UK
+        VARCHAR2 password_hash
+        VARCHAR2 role
+    }
+    APP_SESSION {
+        RAW token_hash PK
+        NUMBER user_id FK
+        TIMESTAMP_TZ expires_at
+    }
+    ISSUE_CATEGORY {
+        NUMBER id PK
+        VARCHAR2 code UK
+        VARCHAR2 name UK
+    }
+    ISSUE_LOCATION {
+        NUMBER id PK
+        VARCHAR2 neighborhood
+        VARCHAR2 address
+        VARCHAR2 postal_code
+        NUMBER latitude
+        NUMBER longitude
+    }
+    ISSUE {
+        NUMBER id PK
+        NUMBER author_id FK
+        NUMBER category_id FK
+        NUMBER location_id FK, UK
+        VARCHAR2 title
+        VARCHAR2 description
+        VARCHAR2 severity
+        VARCHAR2 status
+        VARCHAR2 request_key
+        RAW request_hash
+        BLOB photo
+        VARCHAR2 photo_mime
+        NUMBER is_sample
+        TIMESTAMP_TZ created_at
+        TIMESTAMP_TZ updated_at
+    }
+    ISSUE_CONFIRMATION {
+        NUMBER issue_id PK, FK
+        NUMBER user_id PK, FK
+        TIMESTAMP_TZ created_at
+    }
+    ISSUE_STATUS_HISTORY {
+        NUMBER id PK
+        NUMBER issue_id FK
+        NUMBER actor_id FK
+        VARCHAR2 previous_status
+        VARCHAR2 new_status
+        VARCHAR2 note
+        TIMESTAMP_TZ created_at
+    }
+    ADDRESS_SEARCH_CACHE {
+        RAW query_hash PK
+        VARCHAR2 result_json
+        TIMESTAMP_TZ expires_at
+    }
+    APP_SCHEMA_MIGRATION {
+        VARCHAR2 version PK
+        VARCHAR2 checksum
+        TIMESTAMP_TZ applied_at
+    }
